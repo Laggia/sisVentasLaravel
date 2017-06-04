@@ -64,12 +64,13 @@ class ArticuloController extends Controller
         $articulo->descripcion=$request->get('descripcion');
         $articulo->estado = 'Activo';
 
-        if(Input::hasFile('image')){
-        	$file = Input::file('image');
+        if(Input::hasFile('imagen')){
+        	$file = Input::file('imagen');
         	//$file->move(public_path().'/imagenes/articulos/', $file->getClientOriginalName());
         	//$articulo->imagen=$file->getClientOriginalName();
-        	$nameFile = $articulo->codigo.'.'.$file->guessExtension();
-        	$file->move(public_path().'imagenes/articulos/', $nameFile);
+        	$nameFile = $articulo->codigo.'.'.$file->getClientOriginalExtension();
+        	$file->move(public_path().'\\imagenes\\articulos\\', $nameFile);
+            //dd(public_path().'\\imagenes\\articulos\\'.$nameFile);
 
         	$articulo->imagen = $nameFile;
         	
@@ -121,14 +122,15 @@ class ArticuloController extends Controller
         $articulo->stock=$request->get('stock');
         $articulo->descripcion=$request->get('descripcion');
 
-        if(Input::hasFile('image')){
-        	$file = Input::file('image');
+        if(Input::hasFile('imagen')){
+        	$file = Input::file('imagen');
         	//$file->move(public_path().'/imagenes/articulos/', $file->getClientOriginalName());
         	//$articulo->imagen=$file->getClientOriginalName();
-        	$nameFile = $articulo->codigo.'.'.$file->guessExtension();
-        	$file->move(public_path().'imagenes/articulos/', $nameFile);
+        	$nameFile = $articulo->codigo.'.'.$file->getClientOriginalExtension();
+            $file->move(public_path().'\\imagenes\\articulos\\', $nameFile);
+            //dd(public_path().'\\imagenes\\articulos\\'.$nameFile);
 
-        	$articulo->imagen = $nameFile;
+            $articulo->imagen = $nameFile;
 	    }
         
 	    $articulo->update();
