@@ -52,10 +52,11 @@ class CategoriaController extends Controller
     {
         $categoria = new Categoria;
         $categoria->nombre=$request->get('nombre');
+        $categoria->descripcion=$request->get('descripcion');
         $categoria->condicion=1;
         $categoria->save();
 
-        return redirect('almacen.categoria');
+        return redirect('almacen/categoria');
 
     }
 
@@ -95,7 +96,7 @@ class CategoriaController extends Controller
         $categoria->descripcion=$request->get('descripcion');
         $categoria->update();
 
-        return redirect('almacen.categoria');
+        return redirect('almacen/categoria');
     }
 
     /**
@@ -110,7 +111,7 @@ class CategoriaController extends Controller
         $categoria->condicion='0';
         $categoria->update();
 
-        return redirect('almacen.categoria');
+        return redirect('almacen/categoria');
 
     }
 }

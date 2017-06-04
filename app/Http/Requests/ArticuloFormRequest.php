@@ -4,7 +4,7 @@ namespace sisVentas\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CategoriaFormRequest extends FormRequest
+class ArticuloFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,12 @@ class CategoriaFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre' => 'required|max:50',
-            'descripcion' => 'required|max:256|min:3',
-            
+            'idcategoria' => 'required',
+            'codigo' => 'required|max:50',
+            'nombre' => 'required|max:100',
+            'stock' => 'required|numeric',
+            'descripcion' => 'max:512',
+            'imagen' => 'mimes:jpeg,bmp,png',
         ];
     }
 }
